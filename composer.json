@@ -1,9 +1,17 @@
 {
     "require": {
-        "lengbin/helper-class": "0.4.9.2",
+        "php": "^7.2",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "lengbin/helper": "dev-master",
         "jaeger/querylist": "^4.2.5",
         "hyperf/nano": "^1.0",
-        "hyperf/process": "^1.1"
+        "hyperf/process": "^1.1",
+        "hyperf/db": "^1.1",
+        "hyperf/cache": "^1.1",
+        "hyperf/logger": "^1.1",
+        "jaeger/querylist-absolute-url": "^4.0",
+        "swlib/saber": "^1.0"
     },
 
     "autoload": {

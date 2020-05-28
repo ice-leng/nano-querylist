@@ -1,20 +1,14 @@
 <?php
-use Hyperf\Contract\StdoutLoggerInterface;
-use Hyperf\Nano\Factory\AppFactory;
-use App\Table;
+
+date_default_timezone_set("Asia/Shanghai");
 
 require_once __DIR__ . '/vendor/autoload.php';
+$app = Hyperf\Nano\Factory\AppFactory::create();
 
-$app = AppFactory::create();
+$dotenv = \Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
 
-$class = Table::class;
-
-$app->addProcess(function() use ($class){
-    $this->get(StdoutLoggerInterface::class)->info('start...' . date('Y-m-d H:i:s'));
-    $table = $this->get($class);
-    $this->get(StdoutLoggerInterface::class)->info($table->uri());
-    sleep(10);
-    $this->get(StdoutLoggerInterface::class)->info('done...' . date('Y-m-d H:i:s'));
-});
+$configs = include __DIR__ . '/config.php';
+$app->config($configs);
 
 $app->run();
